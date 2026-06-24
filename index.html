@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="What Matters in RL-Based Methods for Object-Goal Navigation? A large-scale empirical study and a unified framework for modular RL-based ObjectNav (ECCV 2026).">
+  <meta name="keywords" content="Object-Goal Navigation, ObjectNav, Embodied AI, Reinforcement Learning, Visual Navigation, Habitat, Empirical Study">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What Matters in RL-Based Methods for Object-Goal Navigation?</title>
+
+  <!-- Open Graph / social cards -->
+  <meta property="og:title" content="What Matters in RL-Based Methods for Object-Goal Navigation?"/>
+  <meta property="og:description" content="An empirical study and a unified framework for modular RL-based Object-Goal Navigation. ECCV 2026."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="./static/images/overview.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="What Matters in RL-Based Methods for Object-Goal Navigation?"/>
+  <meta name="twitter:description" content="An empirical study and a unified framework for modular RL-based Object-Goal Navigation. ECCV 2026."/>
+  <meta name="twitter:image" content="./static/images/overview.png"/>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" type="image/svg+xml" href="./static/images/robot.svg?v=2">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="#">
+        <span class="icon"><i class="fas fa-home"></i></span>
+      </a>
+      <a class="navbar-item" href="#abstract">Abstract</a>
+      <a class="navbar-item" href="#framework">Framework</a>
+      <a class="navbar-item" href="#findings">Findings</a>
+      <a class="navbar-item" href="#study">Study</a>
+      <a class="navbar-item" href="#results">Results</a>
+      <a class="navbar-item" href="#BibTeX">BibTeX</a>
+    </div>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">What Matters in RL-Based Methods for Object-Goal Navigation?</h1>
+          <h2 class="subtitle is-4 publication-subtitle">An Empirical Study and A Unified Framework</h2>
+          <span class="venue-badge">ECCV 2026</span>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://people.epfl.ch/hongze.wang?lang=en">Hongze Wang</a><sup>1,&dagger;</sup>,</span>
+            <span class="author-block">
+              <a href="https://boysun045.github.io/boysun-website/">Boyang Sun</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://jiaxux.ing">Jiaxu Xing</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://github.com/MichaelFYang">Fan Yang</a><sup>3</sup>,</span>
+            <span class="author-block">
+              <a href="https://rsl.ethz.ch/the-lab/people/person-detail.hutter.html">Marco Hutter</a><sup>3</sup>,</span>
+            <span class="author-block">
+              <a href="https://robodhruv.github.io">Dhruv Shah</a><sup>4</sup>,</span>
+            <span class="author-block">
+              <a href="https://rpg.ifi.uzh.ch/people_scaramuzza.html">Davide Scaramuzza</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://people.inf.ethz.ch/pomarc/">Marc Pollefeys</a><sup>1,5</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors affiliations">
+            <span class="author-block"><sup>1</sup>Computer Vision and Geometry Group, ETH Zürich,</span>
+            <span class="author-block"><sup>2</sup>Robotics and Perception Group, University of Zurich,</span>
+            <span class="author-block"><sup>3</sup>Robotic Systems Lab, ETH Zürich,</span>
+            <span class="author-block"><sup>4</sup>Princeton University,</span>
+            <span class="author-block"><sup>5</sup>Microsoft</span>
+          </div>
+          <div class="is-size-7 publication-authors author-note">
+            <sup>&dagger;</sup>Present address: École Polytechnique Fédérale de Lausanne (EPFL). All work done at the
+            Computer Vision and Geometry Group, ETH Zürich.
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- Paper (camera-ready available after ECCV 2026) -->
+              <span class="link-block">
+                <span class="button is-normal is-rounded is-dark is-pending"
+                      title="The camera-ready paper will be available after ECCV 2026">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper (available after ECCV 2026)</span>
+                </span>
+              </span>
+              <!-- arXiv -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2510.01830" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code -->
+              <span class="link-block">
+                <a href="https://github.com/honwang0054/What-matters-in-RL-ObjNav-release" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/overview.png" alt="Overview of the empirical study and unified framework."
+           class="teaser-img"/>
+      <h2 class="subtitle has-text-centered">
+        We dissect modular RL-based <strong>Object-Goal Navigation</strong> into
+        <strong>perception</strong>, <strong>policy</strong>, and <strong>test-time enhancement</strong>,
+        measure what each contributes, and turn the findings into a state-of-the-art system.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<!-- Abstract -->
+<section class="section" id="abstract">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Object-Goal Navigation (ObjectNav) is a key capability for deploying mobile robots in
+            everyday environments such as homes, schools, and workplaces. In this task, an agent must
+            locate an instance of a target object category in previously unseen environments using only
+            onboard perception, requiring the integration of semantic understanding, spatial reasoning,
+            and long-horizon planning.
+          </p>
+          <p>
+            Reinforcement learning (RL) has become a dominant paradigm for ObjectNav, yet modern systems
+            involve numerous design choices across perception modules, policy architectures, and
+            inference-time strategies. The relative impact of these components, however, remains poorly
+            understood. In this work, we present a large-scale empirical study of modular RL-based
+            ObjectNav systems. We decompose the navigation pipeline into three key components —
+            <em>perception</em>, <em>policy</em>, and <em>test-time enhancement</em> — and conduct
+            extensive controlled experiments to analyze their individual contributions.
+          </p>
+          <p>
+            Our results suggest that improvements in perception quality and test-time strategies often
+            yield larger performance gains than policy improvements alone. Motivated by these findings, we
+            introduce a unified framework for systematically studying modular ObjectNav systems and build
+            an enhanced system that achieves state-of-the-art performance on the Gibson benchmark,
+            improving SPL by 6.6% and success rate by 2.7% over prior methods. We also introduce a human
+            expert baseline, achieving 98% success, highlighting the significant gap between current RL
+            agents and human-level navigation. Finally, we provide practical insights and design
+            recommendations for each module to help guide future research.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Unified Framework -->
+<section class="section is-light-bg" id="framework">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">A Unified Framework</h2>
+    <p class="subtitle is-6 has-text-centered framework-sub">
+      We follow the natural pipeline of robot navigation and decompose a typical RL-based approach into
+      three core modules, then study each under controlled settings.
+    </p>
+    <div class="figure-wrap">
+      <img src="./static/images/modules_navi.png" alt="Unified framework: perception, policy and test-time enhancement."/>
+      <p class="figure-caption">
+        <strong>A. Perception:</strong> RGB-D and pose are fused into a top-down semantic map.
+        <strong>B. Policy:</strong> the map and auxiliary inputs guide action prediction.
+        <strong>C. Test-Time Enhancement:</strong> plug-and-play strategies applied at evaluation to boost
+        performance without retraining.
+      </p>
+    </div>
+
+    <div class="columns is-centered module-cards">
+      <div class="column">
+        <div class="module-card">
+          <span class="module-icon"><i class="fas fa-eye"></i></span>
+          <h3 class="module-title">Perception</h3>
+          <p>An object detector extracts semantics from RGB images, fused with depth into a top-down
+             semantic map. We study the <strong>object detector</strong>, <strong>map augmentation</strong>,
+             and <strong>map size</strong>.</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="module-card">
+          <span class="module-icon"><i class="fas fa-route"></i></span>
+          <h3 class="module-title">Policy</h3>
+          <p>An RL policy infers a long-term goal from the map. We study the <strong>observation
+             space</strong>, <strong>action space</strong>, <strong>network architecture</strong>, and
+             <strong>reward design</strong>.</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="module-card">
+          <span class="module-icon"><i class="fas fa-bolt"></i></span>
+          <h3 class="module-title">Test-Time Enhancement</h3>
+          <p>Training-free strategies that correct common failures: an <strong>untrapping helper</strong>,
+             <strong>dynamic goal selection</strong>, and a <strong>remapping mask</strong> for
+             multi-floor overlap.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Key Findings -->
+<section class="section" id="findings">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Key Findings</h2>
+    <div class="columns is-centered finding-cards">
+      <div class="column">
+        <div class="finding-card">
+          <span class="finding-icon"><i class="fas fa-camera"></i></span>
+          <h3>Perception dominates</h3>
+          <p>The capability of the perception module has a substantial impact on overall navigation
+             performance — a finetuned detector alone can lift Success Rate by nearly 7%.</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="finding-card">
+          <span class="finding-icon"><i class="fas fa-bolt"></i></span>
+          <h3>Test-time strategies are underrated</h3>
+          <p>Often dismissed as engineering details, plug-and-play test-time strategies provide significant
+             improvements at deployment — with no extra training.</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="finding-card">
+          <span class="finding-icon"><i class="fas fa-balance-scale"></i></span>
+          <h3>Fair policy comparison</h3>
+          <p>With a unified configuration for perception and test-time strategies, differences between
+             policy designs can finally be measured reliably and fairly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Empirical Study (tabbed tables) -->
+<section class="section is-light-bg" id="study">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Empirical Study</h2>
+    <p class="subtitle is-6 has-text-centered framework-sub">
+      We isolate each design choice under controlled settings and report standard (SR, SPL, DTS) and
+      dynamic-timestep (D-SR, D-SPL, D-DTS) metrics. Full tables are in the paper.
+    </p>
+
+    <div class="tabs is-centered is-toggle is-toggle-rounded study-tabs">
+      <ul>
+        <li class="is-active" data-target="panel-perception"><a><span class="icon is-small"><i class="fas fa-eye"></i></span><span>Perception</span></a></li>
+        <li data-target="panel-policy"><a><span class="icon is-small"><i class="fas fa-route"></i></span><span>Policy</span></a></li>
+        <li data-target="panel-testtime"><a><span class="icon is-small"><i class="fas fa-bolt"></i></span><span>Test-time</span></a></li>
+      </ul>
+    </div>
+
+    <!-- Perception table (Table 1) -->
+    <div id="panel-perception" class="study-panel is-active">
+      <div class="table-scroll">
+        <table class="study-table">
+          <thead>
+            <tr>
+              <th>Pol.</th><th>Detector</th><th>Size</th><th>Aug.</th>
+              <th>SR&nbsp;%</th><th>SPL&nbsp;%</th><th>DTS&nbsp;m</th>
+              <th>D-SR&nbsp;%</th><th>D-SPL&nbsp;%</th><th>D-DTS&nbsp;m</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>C</td><td>MRCNN</td><td>480</td><td class="yes">&#10003;</td><td>77.7</td><td>40.9</td><td>1.047</td><td>61.6</td><td>38.6</td><td>1.641</td></tr>
+            <tr><td>C</td><td>RedNet</td><td>480</td><td class="yes">&#10003;</td><td>80.9</td><td>43.9</td><td>0.851</td><td>65.5</td><td>41.6</td><td>1.488</td></tr>
+            <tr><td>C</td><td>RF-DETR-Seg</td><td>480</td><td class="yes">&#10003;</td><td>77.6</td><td>44.2</td><td>0.991</td><td>64.1</td><td>42.4</td><td>1.512</td></tr>
+            <tr><td>C</td><td>RF-DETR+SAM2</td><td>480</td><td class="yes">&#10003;</td><td>77.1</td><td>44.7</td><td>1.112</td><td>63.8</td><td>42.6</td><td>1.669</td></tr>
+            <tr><td>C</td><td>YOLO11-XL</td><td>480</td><td class="yes">&#10003;</td><td>76.0</td><td>42.6</td><td>1.147</td><td>62.8</td><td>40.8</td><td>1.668</td></tr>
+            <tr class="best"><td>C</td><td>FT-MRCNN</td><td>480</td><td class="yes">&#10003;</td><td>83.8</td><td>47.6</td><td>0.800</td><td>69.5</td><td>45.3</td><td>1.425</td></tr>
+            <tr><td>C</td><td>FT-MRCNN</td><td>240</td><td class="yes">&#10003;</td><td>78.7</td><td>45.2</td><td>1.135</td><td>64.8</td><td>43.1</td><td>1.658</td></tr>
+            <tr><td>C</td><td>FT-MRCNN</td><td>480</td><td class="no">&#10007;</td><td>83.3</td><td>44.2</td><td>0.771</td><td>63.5</td><td>41.2</td><td>1.727</td></tr>
+            <tr class="group-split"><td>F</td><td>MRCNN</td><td>480</td><td class="yes">&#10003;</td><td>71.2</td><td>38.5</td><td>1.428</td><td>49.1</td><td>33.5</td><td>2.086</td></tr>
+            <tr><td>F</td><td>RedNet</td><td>480</td><td class="yes">&#10003;</td><td>75.0</td><td>40.9</td><td>1.114</td><td>53.1</td><td>35.7</td><td>1.876</td></tr>
+            <tr class="best"><td>F</td><td>FT-MRCNN</td><td>480</td><td class="yes">&#10003;</td><td>79.9</td><td>45.8</td><td>0.892</td><td>57.2</td><td>39.7</td><td>1.714</td></tr>
+            <tr><td>F</td><td>RF-DETR-Seg</td><td>480</td><td class="yes">&#10003;</td><td>72.9</td><td>40.3</td><td>1.183</td><td>53.6</td><td>36.6</td><td>1.871</td></tr>
+            <tr><td>F</td><td>RF-DETR+SAM2</td><td>480</td><td class="yes">&#10003;</td><td>72.8</td><td>43.7</td><td>1.416</td><td>53.6</td><td>39.2</td><td>2.006</td></tr>
+            <tr><td>F</td><td>YOLO11-XL</td><td>480</td><td class="yes">&#10003;</td><td>69.5</td><td>39.0</td><td>1.514</td><td>49.8</td><td>34.6</td><td>2.106</td></tr>
+            <tr><td>F</td><td>FT-MRCNN</td><td>240</td><td class="yes">&#10003;</td><td>79.6</td><td>43.6</td><td>1.033</td><td>61.0</td><td>40.1</td><td>1.742</td></tr>
+            <tr><td>F</td><td>FT-MRCNN</td><td>480</td><td class="no">&#10007;</td><td>78.0</td><td>42.5</td><td>1.000</td><td>53.4</td><td>36.3</td><td>1.791</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        <strong>Takeaway:</strong> a Gibson-finetuned detector (FT-MRCNN) gives a clear, consistent boost
+        across all metrics — perception quality propagates directly to navigation. <span class="legend">C = Corner Goal Policy, F = Frontier-Based Policy.</span>
+      </p>
+    </div>
+
+    <!-- Policy table (Table 2) -->
+    <div id="panel-policy" class="study-panel">
+      <div class="table-scroll">
+        <table class="study-table">
+          <thead>
+            <tr>
+              <th>Obs. Space</th><th>Action Space</th><th>Network</th><th>Reward</th>
+              <th>SR&nbsp;%</th><th>SPL&nbsp;%</th><th>DTS&nbsp;m</th>
+              <th>D-SR&nbsp;%</th><th>D-SPL&nbsp;%</th><th>D-DTS&nbsp;m</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Standard</td><td>Discrete</td><td>Transformer</td><td>Type 2</td><td>83.4</td><td>43.8</td><td>0.717</td><td>66.3</td><td>41.0</td><td>1.501</td></tr>
+            <tr><td>Compressed</td><td>Discrete</td><td>Transformer</td><td>Type 2</td><td>83.8</td><td>43.3</td><td>0.685</td><td>65.8</td><td>40.3</td><td>1.572</td></tr>
+            <tr class="best"><td>Compressed</td><td>Continuous</td><td>Transformer</td><td>Type 2</td><td>84.4</td><td>48.2</td><td>0.741</td><td>69.6</td><td>45.8</td><td>1.415</td></tr>
+            <tr><td>Compressed</td><td>Discrete</td><td>CNN</td><td>Type 2</td><td>83.7</td><td>43.3</td><td>0.706</td><td>65.8</td><td>40.5</td><td>1.548</td></tr>
+            <tr><td>Compressed</td><td>Discrete</td><td>Transformer</td><td>Type 1</td><td>85.2</td><td>45.8</td><td>0.664</td><td>67.8</td><td>43.0</td><td>1.346</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        <strong>Takeaway:</strong> under a unified perception + test-time configuration, policy choices show
+        smaller margins. A continuous action space helps SPL, a compressed observation matches the standard
+        one at &gt;6&times; smaller size, and CNN vs. Transformer backbones perform comparably.
+      </p>
+    </div>
+
+    <!-- Test-time table (Table 3) -->
+    <div id="panel-testtime" class="study-panel">
+      <div class="table-scroll">
+        <table class="study-table">
+          <thead>
+            <tr>
+              <th>Policy</th><th>Untrapping</th><th>Dynamic Goal</th><th>Remapping</th>
+              <th>SR&nbsp;%</th><th>SPL&nbsp;%</th><th>DTS&nbsp;m</th>
+              <th>D-SR&nbsp;%</th><th>D-SPL&nbsp;%</th><th>D-DTS&nbsp;m</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>RL (Continuous)</td><td class="no">&#10007;</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td>81.3</td><td>47.3</td><td>0.741</td><td>69.1</td><td>45.3</td><td>1.509</td></tr>
+            <tr><td>RL (Continuous)</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="no">&#10007;</td><td>82.6</td><td>48.0</td><td>0.817</td><td>70.1</td><td>45.9</td><td>1.384</td></tr>
+            <tr class="best"><td>RL (Continuous)</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td>84.4</td><td>48.2</td><td>0.741</td><td>69.6</td><td>45.8</td><td>1.415</td></tr>
+            <tr><td>RL (Discrete)</td><td class="yes">&#10003;</td><td class="no">&#10007;</td><td class="yes">&#10003;</td><td>83.8</td><td>43.3</td><td>0.685</td><td>65.8</td><td>40.3</td><td>1.572</td></tr>
+            <tr class="best"><td>RL (Discrete)</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td>85.3</td><td>47.5</td><td>0.632</td><td>69.8</td><td>44.9</td><td>1.397</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        <strong>Takeaway:</strong> stacking training-free test-time strategies yields clear gains — e.g.,
+        dynamic goal selection lifts the discrete policy from 83.8% to 85.3% SR — without any retraining.
+      </p>
+    </div>
+
+    <!-- Qualitative carousel -->
+    <h3 class="title is-4 has-text-centered qual-title">Test-Time Strategies in Action</h3>
+    <div id="results-carousel" class="carousel results-carousel">
+      <div class="item">
+        <img src="./static/images/untrapping.png" alt="Untrapping helper."/>
+        <p class="carousel-caption">Untrapping helper — escaping stuck situations in narrow spaces.</p>
+      </div>
+      <div class="item">
+        <img src="./static/images/dynamic_goal_selection.png" alt="Dynamic goal selection."/>
+        <p class="carousel-caption">Dynamic goal selection — avoiding redundant, repeated exploration.</p>
+      </div>
+      <div class="item">
+        <img src="./static/images/remapping.png" alt="Remapping mask."/>
+        <p class="carousel-caption">Remapping mask — handling multi-floor map overlap from undetected staircases.</p>
+      </div>
+      <div class="item">
+        <img src="./static/images/rollout.png" alt="Navigation rollout."/>
+        <p class="carousel-caption">A navigation rollout of the enhanced agent reaching the target object.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SOTA + Human baseline -->
+<section class="section" id="results">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">State of the Art &amp; the Human Gap</h2>
+    <p class="subtitle is-6 has-text-centered framework-sub">
+      Guided by our analysis, the best-configured system outperforms prior methods on the Gibson benchmark.
+      A human-expert baseline — researchers under the same setup and observations — exposes a large
+      remaining gap.
+    </p>
+    <div class="table-scroll">
+      <table class="study-table results-table">
+        <thead>
+          <tr><th>Method</th><th>SR&nbsp;%&nbsp;&uarr;</th><th>SPL&nbsp;%&nbsp;&uarr;</th><th>DTS&nbsp;m&nbsp;&darr;</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>SemExp</td><td>65.7</td><td>33.9</td><td>1.47</td></tr>
+          <tr><td>SemExp*</td><td>71.7</td><td>39.6</td><td>1.39</td></tr>
+          <tr><td>PONI</td><td>73.6</td><td>41.0</td><td>1.25</td></tr>
+          <tr><td>3D-aware</td><td>74.5</td><td>42.1</td><td>1.16</td></tr>
+          <tr><td>FSE</td><td>71.5</td><td>36.0</td><td>1.35</td></tr>
+          <tr><td>SGM</td><td>78.0</td><td>44.0</td><td>1.11</td></tr>
+          <tr><td>L3MVN</td><td>76.8</td><td>38.8</td><td>1.01</td></tr>
+          <tr><td>NaviFormer</td><td>82.6</td><td>40.9</td><td>0.76</td></tr>
+          <tr><td>T-Diff</td><td>79.6</td><td>44.9</td><td>1.00</td></tr>
+          <tr><td>HOZ++</td><td>78.2</td><td>44.9</td><td>1.13</td></tr>
+          <tr class="is-ours"><td>Ours (continuous)</td><td>84.4</td><td>48.2</td><td>0.74</td></tr>
+          <tr class="is-human"><td>Human Experts</td><td>98.0</td><td>53.3</td><td>0.26</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note has-text-centered">
+      Comparisons on Gibson (continuous-action policy shown). Our best configuration outperforms all prior
+      methods; the discrete-action variant reaches <strong>85.3% SR / 47.5% SPL</strong>.
+      <strong>Human Experts</strong> reach 98% success, underscoring the algorithmic gap toward human-level
+      navigation.
+    </p>
+  </div>
+</section>
+
+
+<!-- BibTeX -->
+<section class="section is-light-bg" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">BibTeX</h2>
+    <pre><code>@inproceedings{wang2026whatmatters,
+  title     = {What Matters in RL-Based Methods for Object-Goal Navigation?
+               An Empirical Study and A Unified Framework},
+  author    = {Wang, Hongze and Sun, Boyang and Xing, Jiaxu and Yang, Fan and
+               Hutter, Marco and Shah, Dhruv and Scaramuzza, Davide and Pollefeys, Marc},
+  booktitle = {European Conference on Computer Vision (ECCV)},
+  year      = {2026},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://arxiv.org/pdf/2510.01830"><i class="fas fa-file-pdf"></i></a>
+      <a class="icon-link" href="https://github.com/honwang0054/What-matters-in-RL-ObjNav-release"><i class="fab fa-github"></i></a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+              href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons
+              Attribution-ShareAlike 4.0 International License</a>.
+            It is adapted from the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
+            project page; we thank the authors for releasing their template.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

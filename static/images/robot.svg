@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- rounded-square background in the page accent (ETH blue) -->
+  <rect x="3" y="3" width="58" height="58" rx="15" fill="#215CAF"/>
+  <!-- antenna -->
+  <line x1="32" y1="7" x2="32" y2="15" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="32" cy="7" r="3.4" fill="#ffffff"/>
+  <!-- ears / side modules -->
+  <rect x="8" y="26" width="5.5" height="13" rx="2.7" fill="#ffffff"/>
+  <rect x="50.5" y="26" width="5.5" height="13" rx="2.7" fill="#ffffff"/>
+  <!-- robot head -->
+  <rect x="14" y="16" width="36" height="31" rx="9" fill="#ffffff"/>
+  <!-- eyes -->
+  <circle cx="25" cy="29" r="4.2" fill="#215CAF"/>
+  <circle cx="39" cy="29" r="4.2" fill="#215CAF"/>
+  <!-- mouth -->
+  <rect x="23.5" y="38" width="17" height="4" rx="2" fill="#215CAF"/>
+</svg>
